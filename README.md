@@ -1,5 +1,65 @@
-# Vue 3 + TypeScript + Vite
+# Lingoso 🌍🗣️
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+**AI that speaks for you, wherever you travel.**  
+Lingoso is your smart travel companion that helps you communicate, navigate, and discover local services anywhere in the world.  
+Whether you’re at a shop, on a bus, or exploring a new city, Lingoso makes sure you’re understood.
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+---
+
+## 🚀 Features
+
+- **AI Video-Call Avatar**  
+  Speak naturally with an AI-powered avatar that listens and responds to your voice.
+
+- **Voice Translation**  
+  Translate your speech in real time to local languages to interact with sellers, drivers, or locals.
+
+- **Find Anything Around You**  
+  Discover services, essentials, and experiences nearby:
+
+  - 🚌 Move Around – buses, taxis, ride-hailing
+  - 🍽️ Eat Out – restaurants, cafes, street food
+  - 🛒 Buy Essentials – groceries, markets, convenience stores
+  - 💇 Look Good – salons, spas, wellness
+  - 🍸 Nightlife – bars, clubs, lounges
+  - 🎉 Happenings – local events and festivals
+  - ⛪ / 🕌 Places of Worship – churches and mosques
+  - 🏥 Healthcare – pharmacies, hospitals, clinics
+  - 🏦 Money Matters – banks, ATMs, currency exchange
+  - 🛍️ Shopping – malls, clothing, souvenirs
+  - 🏞️ Explore – attractions, parks, landmarks
+  - 🚲 Rentals – bikes, scooters, cars
+
+- **AI Assistance**  
+  Ask anything, from “Where’s the nearest bus?” to “Translate this menu for me,” and get instant help.
+
+- **Simple UI**  
+  A clean interface with voice-first interaction so you can focus on your journey.
+
+---
+
+## 🛠️ Tech Stack (suggested)
+
+- **Frontend:** Vue 3 / React (depending on your implementation)
+- **Backend:** Node.js / Express or Laravel
+- **AI / NLP:** OpenAI / Whisper API / Translation APIs
+- **Maps & Location:** Google Maps API / OpenStreetMap
+- **Video & Voice:** WebRTC
+
+---
+
+## 📦 Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/lingoso.git
+
+# Enter project folder
+cd lingoso
+
+# Install dependencies
+npm install
+
+# Run development server
+npm run dev
+```
