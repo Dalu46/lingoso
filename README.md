@@ -1,12 +1,13 @@
 # Lingoso 🌍🗣️
 
 **AI that speaks for you, wherever you travel.**  
-Lingoso is your smart travel companion that helps you communicate, navigate, and discover local services anywhere in the world.  
+Lingoso is your smart travel companion that helps you communicate, navigate, and discover local services anywhere in the world.
+
 Whether you’re at a shop, on a bus, or exploring a new city, Lingoso makes sure you’re understood.
 
 ---
 
-## 🚀 Features
+## 🚀 Features [including comming soon features...]
 
 - **AI Video-Call Avatar**  
   Speak naturally with an AI-powered avatar that listens and responds to your voice.
@@ -38,13 +39,12 @@ Whether you’re at a shop, on a bus, or exploring a new city, Lingoso makes sur
 
 ---
 
-## 🛠️ Tech Stack (suggested)
+## 🛠️ Tech Stack
 
-- **Frontend:** Vue 3 / React (depending on your implementation)
-- **Backend:** Node.js / Express or Laravel
-- **AI / NLP:** OpenAI / Whisper API / Translation APIs
-- **Maps & Location:** Google Maps API / OpenStreetMap
-- **Video & Voice:** WebRTC
+- **Frontend:** Vue 3 | TypeScript
+- **Backend:** Supabase | Firebase
+- **AI / NLP:** OpenAI | Eleven Labs | Translation APIs | Simli AI | HeyGen
+- **Maps & Location:** Google Maps API
 
 ---
 
