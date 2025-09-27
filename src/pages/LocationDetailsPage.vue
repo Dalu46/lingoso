@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import HeaderMenu from "@/components/HeaderMenu.vue";
 import LogoNameVue from "@/components/LogoName.vue";
 import { countries } from "@/data/countries";
 import { LocationDetails } from "@/types/LocationDetails";
@@ -9,6 +8,7 @@ import InputText from "primevue/inputtext";
 import Select from "primevue/select";
 import Textarea from "primevue/textarea";
 import { computed, ref } from "vue";
+import { useRouter } from "vue-router";
 
 const username = ref("narudesigns");
 const allCountries = computed(() =>
@@ -25,6 +25,8 @@ const formData = ref<LocationDetails>({
   language: "",
 });
 
+const router = useRouter();
+
 const logFormData = () => {
   const formattedFormData = {
     ...formData.value,
@@ -32,113 +34,107 @@ const logFormData = () => {
     travelLocation: formData.value.travelLocation?.name,
   };
   console.log("Form submitted", formattedFormData);
+  router.push("/chat");
 };
 </script>
 
 <template>
   <div :class="$style.wrap">
-    <HeaderMenu :class="$style.headerMenu" />
-    <div :class="$style.content">
-      <div :class="$style.welcome">
-        <LogoNameVue />
-        <div :class="$style.greetingText">
-          Welcome <span :class="$style.username">{{ username }}</span
-          >!
-        </div>
-        <p :class="$style.welcomeNote">
-          The following information enables your AI assistant to give you
-          localized assistance based on your current location.
-        </p>
+    <div :class="$style.welcome">
+      <LogoNameVue />
+      <div :class="$style.greetingText">
+        Welcome <span :class="$style.username">{{ username }}</span
+        >!
       </div>
-
-      <form
-        :class="$style.travelDetailsForm"
-        @submit.prevent="() => logFormData()"
-      >
-        <label :class="$style.label" for="country">Where are you from?</label>
-        <Select
-          v-model="formData.nationality"
-          :class="$style.input"
-          :options="allCountries"
-          optionLabel="name"
-          placeholder="Select a Country"
-        >
-          <template #value="slotProps">
-            <div v-if="slotProps.value" :class="$style.optionValue">
-              <img
-                :alt="slotProps.value.name"
-                :src="
-                  allCountries.find(
-                    (country) => country.code === slotProps.value.code
-                  )?.flagUrl
-                "
-                :width="18"
-              />
-              <div>{{ slotProps.value.name }}</div>
-            </div>
-          </template>
-          <template #option="{ option, selected }">
-            <div
-              :class="[$style.option, { [$style.optionSelected]: selected }]"
-            >
-              <img :alt="option.name" :src="option.flagUrl" :width="18" />
-              <div>{{ option.name }}</div>
-            </div>
-          </template>
-        </Select>
-        <label :class="$style.label" for="country"
-          >Where are you traveling to?</label
-        >
-        <Select
-          v-model="formData.travelLocation"
-          :class="$style.input"
-          :options="allCountries"
-          optionLabel="name"
-          placeholder="Select a City"
-        >
-          <template #value="slotProps">
-            <div v-if="slotProps.value" :class="$style.optionValue">
-              <img
-                :alt="slotProps.value.name"
-                :src="
-                  allCountries.find(
-                    (country) => country.code === slotProps.value.code
-                  )?.flagUrl
-                "
-                :width="18"
-              />
-              <div>{{ slotProps.value.name }}</div>
-            </div>
-          </template>
-          <template #option="{ option, selected }">
-            <div
-              :class="[$style.option, { [$style.optionSelected]: selected }]"
-            >
-              <img :alt="option.name" :src="option.flagUrl" :width="18" />
-              {{ option.name }}
-            </div>
-          </template>
-        </Select>
-        <label :class="$style.label" for="country">
-          What language do you speak?
-        </label>
-        <InputText
-          :class="$style.input"
-          type="text"
-          v-model="formData.language"
-        />
-        <label :class="$style.label" for="country">
-          Why are you traveling?
-        </label>
-        <Textarea
-          :class="$style.input"
-          v-model="formData.travelReason"
-          rows="3"
-          cols="30"
-        />
-        <Button :class="$style.btn" type="submit" label="Start my journey!" />
-      </form>
+      <p :class="$style.welcomeNote">
+        The following information enables your AI assistant to give you
+        localized assistance based on your current location.
+      </p>
     </div>
+
+    <form
+      :class="$style.travelDetailsForm"
+      @submit.prevent="() => logFormData()"
+    >
+      <label :class="$style.label" for="country">Where are you from?</label>
+      <Select
+        v-model="formData.nationality"
+        :class="$style.input"
+        :options="allCountries"
+        optionLabel="name"
+        placeholder="Select a Country"
+      >
+        <template #value="slotProps">
+          <div v-if="slotProps.value" :class="$style.optionValue">
+            <img
+              :alt="slotProps.value.name"
+              :src="
+                allCountries.find(
+                  (country) => country.code === slotProps.value.code
+                )?.flagUrl
+              "
+              :width="18"
+            />
+            <div>{{ slotProps.value.name }}</div>
+          </div>
+        </template>
+        <template #option="{ option, selected }">
+          <div :class="[$style.option, { [$style.optionSelected]: selected }]">
+            <img :alt="option.name" :src="option.flagUrl" :width="18" />
+            <div>{{ option.name }}</div>
+          </div>
+        </template>
+      </Select>
+      <label :class="$style.label" for="country"
+        >Where are you traveling to?</label
+      >
+      <Select
+        v-model="formData.travelLocation"
+        :class="$style.input"
+        :options="allCountries"
+        optionLabel="name"
+        placeholder="Select a City"
+      >
+        <template #value="slotProps">
+          <div v-if="slotProps.value" :class="$style.optionValue">
+            <img
+              :alt="slotProps.value.name"
+              :src="
+                allCountries.find(
+                  (country) => country.code === slotProps.value.code
+                )?.flagUrl
+              "
+              :width="18"
+            />
+            <div>{{ slotProps.value.name }}</div>
+          </div>
+        </template>
+        <template #option="{ option, selected }">
+          <div :class="[$style.option, { [$style.optionSelected]: selected }]">
+            <img :alt="option.name" :src="option.flagUrl" :width="18" />
+            {{ option.name }}
+          </div>
+        </template>
+      </Select>
+      <label :class="$style.label" for="country">
+        What language do you speak?
+      </label>
+      <InputText
+        :class="$style.input"
+        type="text"
+        v-model="formData.language"
+      />
+      <label :class="$style.label" for="country">
+        Why are you traveling?
+      </label>
+      <Textarea
+        :class="$style.input"
+        v-model="formData.travelReason"
+        rows="3"
+        cols="30"
+      />
+      <Button :class="$style.btn" type="submit" label="Start my journey!" />
+    </form>
   </div>
 </template>
 
@@ -146,9 +142,6 @@ const logFormData = () => {
 .wrap {
   display: flex;
   flex-direction: column;
-}
-
-.content {
   padding: 0 var(--spacing-lg);
 }
 
@@ -156,10 +149,6 @@ const logFormData = () => {
   display: flex;
   flex-direction: column;
   margin-top: var(--spacing-xl);
-}
-
-.headerMenu {
-  margin-bottom: var(--spacing-lg);
 }
 
 .welcome {

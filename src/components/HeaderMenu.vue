@@ -31,14 +31,14 @@ defineProps<{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--spacing-md) var(--spacing-lg);
+  padding: var(--spacing-lg); // var(--spacing-lg);
   background: var(--foreground);
   width: 100%;
 
   position: sticky;
   top: 0;
   z-index: 1;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+  // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
 }
 
 .userName {

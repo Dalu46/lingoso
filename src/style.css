@@ -33,9 +33,55 @@ body {
   margin: 0;
   display: flex;
   justify-content: center;
+  background: radial-gradient(
+      circle,
+      transparent 20%,
+      #fbfbfb 20%,
+      #fbfbfb 80%,
+      transparent 80%,
+      transparent
+    ),
+    radial-gradient(
+        circle,
+        transparent 20%,
+        #fbfbfb 20%,
+        #fbfbfb 80%,
+        transparent 80%,
+        transparent
+      )
+      25px 25px,
+    linear-gradient(#f3f3f3 2px, transparent 2px) 0 -1px,
+    linear-gradient(90deg, #fbfbfb 2px, #fbfbfb 2px) -1px 0;
+  background-size: 50px 50px, 50px 50px, 25px 25px, 25px 25px;
 }
 
 #app {
   max-width: 1280px;
   margin: 0 auto;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #1a1a1a;
+    background: radial-gradient(
+        circle,
+        transparent 20%,
+        #1a1a1a 20%,
+        #1a1a1a 80%,
+        transparent 80%,
+        transparent
+      ),
+      radial-gradient(
+          circle,
+          transparent 20%,
+          #1a1a1a 20%,
+          #1a1a1a 80%,
+          transparent 80%,
+          transparent
+        )
+        25px 25px,
+      linear-gradient(#222222 2px, transparent 2px) 0 -1px,
+      linear-gradient(90deg, #1a1a1a 2px, #1a1a1a 2px) -1px 0;
+    background-size: 50px 50px, 50px 50px, 25px 25px, 25px 25px;
+  }
 }
