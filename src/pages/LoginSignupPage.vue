@@ -3,8 +3,14 @@ import GoogleLogo from "@/assets/images/google-icon.svg";
 import LogoName from "@/components/LogoName.vue";
 import Button from "primevue/button";
 import { ref } from "vue";
+import { useRouter } from "vue-router";
 
 const isAuthLoading = ref(false);
+const router = useRouter();
+
+const navigateToDetails = () => {
+  router.push("/location-details");
+};
 </script>
 
 <template>
@@ -16,7 +22,7 @@ const isAuthLoading = ref(false);
       label="Continue with Google"
       :class="$style.btn"
       :loading="isAuthLoading"
-      @click="() => (isAuthLoading = true)"
+      @click="navigateToDetails"
     >
       <template v-if="!isAuthLoading" #icon>
         <img
@@ -37,13 +43,7 @@ const isAuthLoading = ref(false);
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  width: 100dvw;
-  max-width: 450px;
-
-  @media screen and (min-width: 450px) {
-    border: 1px solid var(--border-light);
-  }
+  height: 100%;
 }
 
 .logo {
@@ -60,14 +60,17 @@ const isAuthLoading = ref(false);
 }
 
 .btn {
-  border: 1px solid var(--border-light) !important;
-  box-shadow: 0 8px 12px -5px rgba(0, 0, 0, 0.1) !important;
-  display: flex !important;
-  align-items: center !important;
-  gap: var(--spacing-md) !important;
+  background: var(--bg);
+  color: var(--text-light);
+  font-weight: 400;
+  border: 1px solid var(--border-light);
+  box-shadow: 0 8px 12px -5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
 
-  border-radius: var(--radius-md) !important;
-  height: 50px !important;
-  width: 250px !important;
+  border-radius: var(--radius-md);
+  height: 50px;
+  width: 250px;
 }
 </style>
