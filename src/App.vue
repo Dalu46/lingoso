@@ -7,7 +7,11 @@ const route = useRoute();
 
 <template>
   <div :class="$style.app">
-    <HeaderMenu v-if="route.path !== '/'" :class="$style.headerMenu" />
+    <HeaderMenu
+      v-if="route.path !== '/'"
+      :class="$style.headerMenu"
+      :show-logo-name="route.path !== '/location-details'"
+    />
     <RouterView />
   </div>
 </template>

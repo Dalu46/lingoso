@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import MicIcon from "@/assets/icons/mic.svg";
+import MicIcon from "@/assets/icons/MicIcon.vue";
 import AvatarAIImage from "@/assets/images/avatar-img.png";
 import GlassButton from "@/components/GlassButton.vue";
 import { ref } from "vue";
@@ -12,7 +12,7 @@ const avatarName = ref("Angie"); // TODO: use avatar name
     <img :class="$style.avatarImg" :src="AvatarAIImage" alt="Avatar AI Image" />
     <div :class="$style.buttons">
       <GlassButton :class="$style.voiceBtn">
-        <img :src="MicIcon" alt="Microphone Icon" />
+        <MicIcon />
       </GlassButton>
       <GlassButton :class="$style.btn">Chat with {{ avatarName }}</GlassButton>
     </div>
@@ -22,6 +22,7 @@ const avatarName = ref("Angie"); // TODO: use avatar name
 <style module lang="scss">
 .avatarAI {
   position: relative;
+  height: 500px;
 }
 
 .avatarImg {
@@ -44,11 +45,15 @@ const avatarName = ref("Angie"); // TODO: use avatar name
 
 .voiceBtn {
   border-radius: 50%;
+  width: 64px;
+  height: 64px;
+  flex: none;
 }
 .btn {
   bottom: var(--spacing-xl);
   border-radius: 100px;
-  padding: var(--spacing-md) var(--spacing-xl);
   width: 100%;
+  height: 64px;
+  font-weight: 600;
 }
 </style>
