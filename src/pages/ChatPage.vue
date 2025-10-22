@@ -1,10 +1,18 @@
 <script setup lang="ts">
 import AvatarAI from "@/components/AvatarAI.vue";
-import TranscriptionBox from "@/components/TranscriptionBox.vue";
+import ChatAIBox from "@/components/ChatAIBox.vue";
 import Button from "primevue/button";
 import { ref } from "vue";
 
 const avatarName = ref("Angie");
+
+// Track which component is visible
+const showAvatar = ref(true);
+
+const toggleComponent = () => {
+  showAvatar.value = !showAvatar.value;
+  console.log(showAvatar.value)
+};
 </script>
 
 <template>
@@ -14,13 +22,17 @@ const avatarName = ref("Angie");
       <span :class="$style.avatarName">{{ avatarName }},</span>
       your AI buddy.
     </p>
-    <Button :class="$style.changeBtn">change</Button>
+
     <p :class="$style.introText">
       Angie can translate for you, teach you basic language, and answer any
       question you have.
     </p>
-    <AvatarAI :class="$style.avatarAI" />
-    <TranscriptionBox />
+
+    <!-- Conditionally render either AvatarAI or ChatAIBox -->
+    {{ showAvatar }}
+    <AvatarAI v-if="showAvatar" :class="$style.avatarAI" :onToggle="toggleComponent" />
+    <ChatAIBox v-else :onToggle="toggleComponent" />
+
   </div>
 </template>
 
@@ -48,8 +60,6 @@ const avatarName = ref("Angie");
   margin-bottom: var(--spacing-md);
   background: none;
   color: var(--primary);
-  font-weight: 600;
-  font-weight: normal;
   font-style: italic;
 
   &:hover,
@@ -69,3 +79,4 @@ const avatarName = ref("Angie");
   margin-bottom: var(--spacing-lg);
 }
 </style>
+

@@ -5,6 +5,14 @@ import GlassButton from "@/components/GlassButton.vue";
 import { ref } from "vue";
 
 const avatarName = ref("Angie"); // TODO: use avatar name
+
+const props = defineProps({
+  onToggle: Function
+});
+
+function handleClick() {
+  props.onToggle(); // Calls the parent's toggleComponent
+}
 </script>
 
 <template>
@@ -14,7 +22,7 @@ const avatarName = ref("Angie"); // TODO: use avatar name
       <GlassButton :class="$style.voiceBtn">
         <MicIcon />
       </GlassButton>
-      <GlassButton :class="$style.btn">Chat with {{ avatarName }}</GlassButton>
+      <GlassButton :class="$style.btn" @click="handleClick">Chat with {{ avatarName }}</GlassButton>
     </div>
   </div>
 </template>
